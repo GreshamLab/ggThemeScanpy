@@ -1,0 +1,17 @@
+Package: ggThemeScanpy
+Title: Make ggplot Plots That Look Like Scanpy Plots
+Version: 0.1
+Authors@R: 
+    person(given = "Chris",
+           family = "Jackson",
+           role = c("cre"),
+           email = "cj59@nyu.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Ever tried to make half a paper's worth of single-cell plots using R when the other author is making their plots using python? Just slap some scanpy-looking themes onto ggplot2 objects and move on with your life. 
+License: `use_mit_license()`
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    ggplot2
