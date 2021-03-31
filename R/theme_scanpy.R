@@ -41,7 +41,7 @@ theme_scanpy_continuous <- function(plot.object) {
 #' @export
 theme_scanpy_scatter <- function(plot.object, color.level="color") {
 
-  plot.object <- theme_scanpy_continous(plot.object) +
+  plot.object <- theme_scanpy_continuous(plot.object) +
     ggplot2::theme(axis.ticks = ggplot2::element_blank(),
                    axis.text = ggplot2::element_blank())
 
