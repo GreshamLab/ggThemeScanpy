@@ -17,6 +17,9 @@ theme_scanpy <- function() {
                  axis.ticks.y.right = ggplot2::element_blank(),
                  axis.title.x.top = ggplot2::element_blank(),
                  axis.title.y.right = ggplot2::element_blank(),
+                 panel.background = ggplot2::element_blank(),
+                 panel.grid = ggplot2::element_blank(),
+                 axis.line = ggplot2::element_line(color="black", size=1),
                  legend.title = ggplot2::element_blank())
 }
 
@@ -49,7 +52,7 @@ theme_scanpy_scatter <- function(plot.object, color.level="color") {
   if (is.null(color.level)) {return(plot.object)}
 
   #https://stackoverflow.com/questions/19214914/how-can-i-make-the-legend-in-ggplot2-the-same-height-as-my-plot
-  panel.height <- unit(1,"npc") - sum(ggplot2::ggplotGrob(plot.object)[["heights"]][-3]) - unit(1,"line")
+  suppressWarnings(panel.height <- ggplot2::unit(1,"npc") - sum(ggplot2::ggplotGrob(plot.object)[["heights"]][-3]) - ggplot2::unit(1,"line"))
 
   color.level <- tolower(color.level)
   new.guide <- ggplot2::guide_colorbar(barheight=panel.height,
