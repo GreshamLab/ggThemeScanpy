@@ -27,13 +27,15 @@ theme_scanpy <- function() {
 #' Apply scanpy theme to a ggplot2 plot object that is continuous on both axes
 #'
 #' @param plot.object ggplot2 Plot Object
+#' @param scale_x ggplot2 scale_x Function
+#' @param scale_y ggplot2 scale_y Function
 #' @return ggplot2 Plot object
 #' @export
-theme_scanpy_continuous <- function(plot.object) {
+theme_scanpy_continuous <- function(plot.object, scale_x=ggplot2::scale_x_continuous, scale_y=ggplot2::scale_y_continuous) {
   plot.object +
     theme_scanpy() +
-    ggplot2::scale_y_continuous(sec.axis = ggplot2::dup_axis(breaks = 0)) +
-    ggplot2::scale_x_continuous(sec.axis = ggplot2::dup_axis(breaks = 0))
+    scale_x(sec.axis = ggplot2::dup_axis(breaks = 0)) +
+    scale_y(sec.axis = ggplot2::dup_axis(breaks = 0))
 }
 
 #' Apply scanpy scatter (e.g. PCA or UMAP) theme to a ggplot2 plot object
@@ -77,13 +79,14 @@ theme_scanpy_scatter <- function(plot.object, color.level="color") {
 #' Apply scanpy theme to a ggplot2 plot object that is continuous on the y-axis and discrete on the x-axis
 #'
 #' @param plot.object ggplot2 Plot Object
+#' @param scale_y ggplot2 scale_y Function
 #' @return ggplot2 Plot object
 #' @export
-theme_scanpy_x_categorical <- function(plot.object) {
+theme_scanpy_x_categorical <- function(plot.object, scale_y=ggplot2::scale_y_continuous) {
 
   plot.object <- plot.object +
     theme_scanpy() +
-    ggplot2::scale_y_continuous(sec.axis = ggplot2::dup_axis(breaks = 0)) +
+    scale_y(sec.axis = ggplot2::dup_axis(breaks = 0)) +
     ggplot2::annotate(geom = 'segment', y = Inf, yend = Inf, color = 'black', x = -Inf, xend = Inf, size = 1)
 
   return(plot.object)
@@ -92,13 +95,14 @@ theme_scanpy_x_categorical <- function(plot.object) {
 #' Apply scanpy theme to a ggplot2 plot object that is discrete on the y-axis and continuous on the x-axis
 #'
 #' @param plot.object ggplot2 Plot Object
+#' @param scale_x ggplot2 scale_x Function
 #' @return ggplot2 Plot object
 #' @export
-theme_scanpy_y_categorical <- function(plot.object) {
+theme_scanpy_y_categorical <- function(plot.object, scale_x=ggplot2::scale_x_continuous) {
 
   plot.object <- plot.object +
     theme_scanpy() +
-    ggplot2::scale_x_continuous(sec.axis = ggplot2::dup_axis(breaks = 0)) +
+    scale_x(sec.axis = ggplot2::dup_axis(breaks = 0)) +
     ggplot2::annotate(geom = 'segment', y = -Inf, yend = Inf, color = 'black', x = Inf, xend = Inf, size = 1)
 
   return(plot.object)
